@@ -24,3 +24,28 @@ const pokémon = Object.freeze([
     { "id": 148, "name": "Dragonair",  "types": ["dragon"] }
 ]);
 
+
+
+const bListPkmn = pokémon.filter( p => p.name[0] === "B" );
+const pkmnIds = pokémon.map( p => p.id );
+const divby3 = pokémon.filter(div => div.id % 3 === 0 );
+const byfire = pokémon.filter(fire => fire.types.includes("fire"));
+const oneelement = pokémon.filter(one => one.types.length > 1  )
+const justname = pokémon.map(just => just.name)
+const id99 = pokémon.filter(ide => ide.id > 99).map(nameo => nameo.name)
+const poison = pokémon.filter(poison => poison.types == "poison").map(names => names.name)
+const flying = pokémon.filter(flying => flying.types[1] == "flying").map(names=> names.types[0])
+const count = pokémon.filter(normal => normal.types == "normal")
+
+
+
+
+
+
+
+console.log(divby3);
+console.log(count.length);
+
+
+
+
