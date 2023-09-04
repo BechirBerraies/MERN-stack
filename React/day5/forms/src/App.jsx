@@ -16,7 +16,7 @@ function App() {
         <form action="post">
           <p>Username: <input type="text"
           onChange={(elementItSelf)=>{}}
-           ></input></p>
+          ></input></p>
           <p>Age: <input type="number"></input></p>
           <p>Favorite Food: <input type="text"></input></p>
           <br />
