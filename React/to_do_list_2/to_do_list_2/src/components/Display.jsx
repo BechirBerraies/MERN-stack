@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const Display = ({todolist}) => {
+const Display = ({todolist,DeleteTodo,SetTodolist}) => {
 
 
 
@@ -16,8 +16,20 @@ const Display = ({todolist}) => {
             }>{todo.content}
             
             </span>
-            <input type="checkbox" checked={todo.is_confirmed } />
-            <button>Delete</button>
+            <input type="checkbox" 
+            checked={todo.is_confirmed } 
+            onChange={(e)=>{
+                const Updatedlist = [...todolist] 
+                Updatedlist[idx].is_confirmed = ! Updatedlist[idx].is_confirmed
+                SetTodolist(Updatedlist);
+            }}
+            
+            />
+            
+            
+            <button
+            onClick={()=>DeleteTodo(idx)}
+            >Delete</button>
 
         </div>)}
     </div>

@@ -3,20 +3,26 @@ import React, {useState} from 'react'
 const Form = ({todolist,SetTodolist}) => {
  
     const [todo,SetTodo]= useState({content:"",is_completed:false})
+    const createTodo= (e)=>{
+        e.preventDefault()
+        SetTodolist([...todolist,todo])
+        SetTodo({content:"",is_completed:false})
+    }
 
   return ( 
     <div>
-    <form action="">
+    <form onSubmit={createTodo}>
 
     <input 
     onChange={(e)=>{
         console.log(todo);
         SetTodo({...todo,content:e.target.value})}}
-    value={todo.conent} />
+    value={todo.content} />
 
 
 
-    <button style={{backgroundColor:"blue"}}>Add</button>
+    <button 
+     style={{backgroundColor:"blue"}}>Add</button>
 
     </form>
 

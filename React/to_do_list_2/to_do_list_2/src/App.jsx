@@ -12,12 +12,19 @@ function App() {
   ]
   )
 
+  const DeleteTodo= (id)=>{
+    console.log("Deleted todo",todolist[id]);
+    const FiltredtodoList = todolist.filter((todo,idx)=>idx != id )
+    SetTodolist(FiltredtodoList)
+    console.log(FiltredtodoList);
+  }
+
   return (
     <>
       <fieldset>
         <legend>Things I have to do</legend>
         <Form todolist={todolist} SetTodolist={SetTodolist}/>
-        <Display todolist={todolist}/>
+        <Display todolist={todolist} DeleteTodo={DeleteTodo} SetTodolist={SetTodolist}/>
       </fieldset>
     </>
   )
