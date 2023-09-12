@@ -7,6 +7,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import ProductForm from './components/ProductForm'
 import Allproducts from './components/Allproducts'
+import Update from './components/EditProducts'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -21,6 +22,7 @@ function App() {
       </div>
       } path="/"/>
       <Route element={<ProductById/>} path='/:id'/>
+      <Route element={<Update/>} path="/product/:id/edit"/>
     </Routes>
     </>
   )

@@ -26,9 +26,39 @@ module.exports= {
         })
     },
 
-    create: ()=>{},
+    create: (req,res)=>{
+        Note.create(req.body)
+        .then(databaseResponse =>{
+            console.log("DATABASE RESPONSE:",databaseResponse)
+            res.status(201).json(databaseResponse)
+        })
+        .catch(databaseError=>{
+            console.log("DATABASE ERROR FIND ALL: ", databaseError )
+            res.status(400).json(databaseError)
+        })
+    },
 
-    update:()=>{},
+    update:(req,res)=>{
+        Note.findByIdAndUpdate(req.params.id,req.body, {new: true,runValidators:true})
+        .then(databaseResponse=>{
+            console.log("DATABASE RESPONSE:",databaseResponse)
+            res.status(200).json(databaseResponse)
+        })
+        .catch(databaseError=>{
+            console.log("DATABASE ERROR : ", databaseError )
+            res.status(400).json(databaseError)
+        })
+    },
 
-    delete:()=>{}
+    delete:(req,res)=>{
+        Note.findByIdAndDelete(req.params.id)
+        .then(databaseResponse=>{
+            console.log("DATABASE RESPONSE:",databaseResponse)
+            res.status(200).json(databaseResponse)
+        })
+        .catch(databaseError=>{
+            console.log("DATABASE ERROR FIND ALL: ", databaseError )
+            res.status(400).json(databaseError)
+        })
+    }
 }

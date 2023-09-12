@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import DeleteProduct from './DeleteProduct'
 
 const Allproducts = (props) => {
     const [Product,SetProduct]=useState([])
@@ -19,7 +20,8 @@ const Allproducts = (props) => {
     <fieldset>
         <legend>All products</legend>
         {Product.map(product =><div key={product._id}>
-            <Link to={`/${product._id}`}>{product.Title} </Link>
+            <Link to={`/${product._id}`}>{product.Title}  </Link>
+            <DeleteProduct id={product._id} products={SetProduct}/>
             </div>)}
     </fieldset>
   )

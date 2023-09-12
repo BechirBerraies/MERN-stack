@@ -4,22 +4,26 @@ import { useParams } from "react-router-dom";
     
 const Update = (props) => {
     const { id } = useParams();
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
+    const [Title, setTitle] = useState('');
+    const [Price, SetPrice] = useState('');
+    const [Description,SetDescription]= useState('');
+    
     
     useEffect(() => {
-        axios.get('http://localhost:8000/api/people/' + id)
+        axios.get('http://localhost:8000/api/product/' + id )
             .then(res => {
-                setFirstName(res.data.firstName);
-                setLastName(res.data.lastName);
+                setTitle(res.data.Title);
+                SetPrice(res.data.Price);
+                SetDescription(res.data.Description)
             })
     }, []);
     
-    const updatePerson = e => {
+    const updateProduct = e => {
         e.preventDefault();
-        axios.put('http://localhost:8000/api/people/' + id, {
-            firstName,
-            lastName
+        axios.put('http://localhost:8000/api/product/' + id, {
+            Title,
+            Price,
+            Description
         })
             .then(res => console.log(res))
             .catch(err => console.error(err));
@@ -28,21 +32,30 @@ const Update = (props) => {
     return (
         <div>
             <h1>Update a Person</h1>
-            <form onSubmit={updatePerson}>
+            <form onSubmit={updateProduct}>
                 <p>
-                    <label>First Name</label><br />
+                    <label>Title</label><br />
                     <input type="text" 
-                    name="firstName" 
-                    value={firstName} 
-                    onChange={(e) => { setFirstName(e.target.value) }} />
+                    name="Title" 
+                    value={Title} 
+                    onChange={(e) => { setTitle(e.target.value) }} />
                 </p>
                 <p>
-                    <label>Last Name</label><br />
+                    <label>Price</label><br />
                     <input type="text" 
-                    name="lastName"
-                    value={lastName} 
-                    onChange={(e) => { setLastName(e.target.value) }} />
+                    name="Price"
+                    value={Price} 
+                    onChange={(e) => { SetPrice(e.target.value) }} />
                 </p>
+                <p>
+                    <label>Description</label><br />
+                    <input type="text" 
+                    name="Description"
+                    value={Description} 
+                    onChange={(e) => { SetDescription(e.target.value) }} />
+                </p>
+                
+
                 <input type="submit" />
             </form>
         </div>

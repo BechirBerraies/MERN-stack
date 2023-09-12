@@ -20,9 +20,15 @@ module.exports={
         .catch(error=>res.status(404).json(error))
     },
     updateProduct:(req,res)=>{
-        Person.findByIdAndUpdate({_id:req.params.id},req.body,{new:true})
+        Product.findByIdAndUpdate({_id:req.params.id},req.body,{new:true})
+        .then(response=>res.status(200).json(response))
+        .catch(error=>res.status(400).json(error))
+    },
+    deleteProduct:(req,res)=>{
+        Product.findByIdAndDelete({_id:req.params.id})
         .then(response=>res.status(200).json(response))
         .catch(error=>res.status(400).json(error))
     }
+
 }
 
