@@ -34,7 +34,7 @@ module.exports= {
         })
         .catch(databaseError=>{
             console.log("DATABASE ERROR FIND ALL: ", databaseError )
-            res.status(400).json(databaseError)
+            res.status(400).json(databaseError.errors)
         })
     },
 

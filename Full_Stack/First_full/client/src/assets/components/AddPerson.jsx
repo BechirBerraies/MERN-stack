@@ -17,7 +17,6 @@ const AddPerson = (props) => {
         .catch(serverError=> console.log(serverError))
 
     }
-
   return (
     <fieldset>
         <legend>
