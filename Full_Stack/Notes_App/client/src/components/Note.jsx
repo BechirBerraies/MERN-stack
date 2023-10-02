@@ -1,27 +1,27 @@
-import React from 'react'
-import noteStyle from './Note.module.css'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 
-const Note = ({note, deleteNote}) => {
-    
+const Note = ({ note, deleteNote }) => {
+  // console.log(props);
   return (
-
     <div className={noteStyle.note}>
-        <h1>{note.title}</h1>
-        <p>
-            {note.content}
-        </p>
+      <Link className='fst-italic text-dark h1' to={`/notes/${note._id}`} style={{textDecoration:"none"}}>{note.isImportant && "📌"} {note.title}</Link>
+      {/* <h1>{note.isImportant ? "📌":""} {note.title}</h1> */}
+      <p className='fs-4'>
+        {note.content}
+      </p>
+      <div className='d-flex justify-content-between align-items-center'>
+        <p>{note.createdAt}</p>
         <div>
-            <p>{note.created_at}</p>
-            <button className={noteStyle.button_edit}>
-            <Link to={`/notes/${note._id}/edit`} >Edit</Link>
-
-            </button>
-            <button className={noteStyle.button_delete} onClick={()=> deleteNote(note._id)}>Delete</button>
+          <Link
+            to={`/notes/${note._id}/edit`}
+            className='btn btn-info mx-2'
+            style={{ width: "100px", height: "40px" }} >
+            Edit</Link>
+          <button className={noteStyle.button_delete} 
+          onClick={() => deleteNote(note._id)}
+          >Delete</button>
         </div>
-
-
+      </div>
     </div>
   )
 }

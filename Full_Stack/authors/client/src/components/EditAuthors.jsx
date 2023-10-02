@@ -8,7 +8,7 @@ import { useNavigate,useParams } from 'react-router-dom'
 const EditForm = (props) => {
 
 const {id} = useParams()
-const navigate = useNavigate()
+const navigate = useNavigate({})
 const [author,setAuthors]=useState({Name:""})
 
 const updateNote = (e) => {
@@ -41,7 +41,7 @@ useEffect(()=>{
     <form onSubmit={updateNote}>
         <p>Name<input type="text" 
             onChange={(e)=> setAuthors({...author,Name:e.target.value})}
-            value={author.Name}
+            check={author.Name}
             /></p>
 
         <button type='submit'>Submit</button>

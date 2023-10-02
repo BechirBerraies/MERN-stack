@@ -2,7 +2,7 @@ const Note = require('../models/note.model')
 
 module.exports= {
     findAll: (req,res)=>{
-        Note.find()
+        Note.find().populate('user')
         .then(databaseResponse =>{
             console.log("DATABASE RESPONSE TO FIND ALL :",databaseResponse)
             res.status(200).json(databaseResponse)
