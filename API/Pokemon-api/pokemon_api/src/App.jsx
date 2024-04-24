@@ -31,7 +31,7 @@ const axiosAPI = ()=>{
       <button onClick={axiosAPI}>Axios API</button>
 
       {Pokemonlist.map((poké,idx)=>(
-         <h1 key={idx}>{poké.name}</h1>
+        <h1 key={idx}>{poké.name}</h1>
       ))}
 
     </fieldset>
