@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import './App.css'
 import axios from 'axios'
-
+import Weather from './Weather';
 
 function GiveIp() {
 
@@ -14,7 +13,7 @@ function GiveIp() {
     console.log(`http://ip-api.com/json/${document.getElementById("IPadress").value}`);
     axios.get("http://ip-api.com/json/"+ document.getElementById("IPadress").value )
     .then(response => {
-      console.log("AXIOS RESPONSE",response)
+      console.log("IPresponse RESPONSE",response)
     setIpadress(response.data)
     })
     .catch(error=>console.log(error))
@@ -24,8 +23,10 @@ function GiveIp() {
 
 
 
+
   return (
     <>
+    
     <h1>
       Hello let's click on this button and see the return 
     </h1>
@@ -40,11 +41,12 @@ function GiveIp() {
       
     <h2>{IPadress.country}</h2>
     <h2>{IPadress.city}</h2>
-    <h2>{IPadress.lan}</h2>
-    <h2>{IPadress.lat}</h2>
     
 
-    
+    <div>
+      <Weather lon={IPadress.lon} lat={IPadress.lat}/>
+    </div>
+
     </>
   )
 }
