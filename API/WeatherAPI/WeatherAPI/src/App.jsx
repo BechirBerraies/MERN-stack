@@ -11,10 +11,15 @@ function App() {
 
 
   return (
+    <>
+
       <Routes>
       <Route path='/' element={<GiveIp/>}></Route>
       <Route path='/Weather' element={<Weather/>}></Route>
       </Routes>
+    
+    
+    </>
   )
 }
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import Weather from './Weather';
 
+
 function GiveIp() {
 
   const [IPadress, setIpadress] = useState({});
@@ -16,9 +17,10 @@ function GiveIp() {
       console.log("IPresponse RESPONSE",response)
     setIpadress(response.data)
     })
-    .catch(error=>console.log(error))
+    .catch(error=>
+      console.log(error),
+    )
   };
-
 
 
 
@@ -27,6 +29,7 @@ function GiveIp() {
   return (
     <>
     
+    <img src="\image\weather2.jpeg" alt="My Image is here" />
     <h1>
       Hello let's click on this button and see the return 
     </h1>
@@ -44,7 +47,7 @@ function GiveIp() {
     
 
     <div>
-      <Weather lon={IPadress.lon} lat={IPadress.lat}/>
+      <Weather lon={IPadress.lon} lat={IPadress.lat} />
     </div>
 
     </>
