@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import GiveIp from './components/GiveIp'
 import Weather from './components/Weather'

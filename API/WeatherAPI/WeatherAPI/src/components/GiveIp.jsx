@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import Weather from './Weather';
+import './GiveIp.css';
 
 
 function GiveIp() {
@@ -27,9 +28,9 @@ function GiveIp() {
 
 
   return (
-    <>
+    <div className="give-ip-container">
     
-    <img src="\image\weather2.jpeg" alt="My Image is here" />
+
     <h1>
       Hello let's click on this button and see the return 
     </h1>
@@ -50,7 +51,7 @@ function GiveIp() {
       <Weather lon={IPadress.lon} lat={IPadress.lat} />
     </div>
 
-    </>
+    </div>
   )
 }
 
