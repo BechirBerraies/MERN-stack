@@ -13,7 +13,7 @@ function Weather(props) {
     {
       e.preventDefault();
       console.log("This is my axios sent "+"https://api.openweathermap.org/data/2.5/weather?lat=" + props.lat + "&lon=" +props.lon +"&appid=" +APiKey);
-      axios.get("https://api.openweathermap.org/data/2.5/weather?lat=" + props.lat + "&lon=" +props.lon +"&appid=" +APiKey )
+      axios.get("https://api.openweathermap.org/data/2.5/weather?lat=" + props.lat + "&lon=" + props.lon +"&appid=" +APiKey )
       .then(response => {
         console.log("Weather RESPONSE",response)
       setWeather(response.data)
@@ -21,7 +21,8 @@ function Weather(props) {
       .catch(error=>console.log(error),
     )
     };
-  
+
+
 
     if (Object.keys(Weather).length === 0 && Weather.constructor === Object) {
       return (
