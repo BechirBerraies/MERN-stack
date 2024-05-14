@@ -1,0 +1,15 @@
+.give-ip-container {
+    background-image: url('../public/image/weather2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+    border: 10px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%; /* Adjust this value as needed */
+    margin: 0 auto; 
+}
+
