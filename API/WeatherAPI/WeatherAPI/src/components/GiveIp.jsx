@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import Weather from './Weather';
 import './GiveIp.css';
-
 const SOAP_ENDPOINT = 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso';
 const authozize ='Access-Control-Allow-Origin:'
 
@@ -10,6 +9,7 @@ const authozize ='Access-Control-Allow-Origin:'
 function GiveIp() {
 
   const [IPadress, setIpadress] = useState({});
+  const [Flag,SetFlag] = useState({})
   
   const handleUserInputChange = (e) =>
   {
@@ -27,19 +27,8 @@ function GiveIp() {
   };
 
 
-  const sendSoapRequest = async () => {
-    
-    const soapEnvelope = `
-    <?xml version="1.0" encoding="utf-8"?>
-    <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-      <soap:Body>
-        <CountryFlag xmlns="http://www.oorsprong.org/websamples.countryinfo">
-          <sCountryISOCode>TN</sCountryISOCode>
-        </CountryFlag>
-      </soap:Body>
-    </soap:Envelope>
-    `;
 
+  const sendSoapRequest = async () => {
     try {
       
       const response = await axios.post( SOAP_ENDPOINT, soapEnvelope, {
@@ -51,19 +40,11 @@ function GiveIp() {
       });
 
       console.log('SOAP Response:', response.data);
+      SetFlag(response.data)
     } catch (error) {
-      if (error.response) {
-        console.error('Error making SOAP request0:', error.response.status, error.response.statusText);
-      } else if (error.request) {
-        // The request was made but no response was received
-        console.error('Error making SOAP request1:', error.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.error('Error making SOAP request2:', error.message);
-      }
+      console.error('Error making SOAP request:', error);
     }
   };
-
 
 
 

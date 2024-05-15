@@ -11,4 +11,4 @@ app.use( express.json() ,express.urlencoded({ extended: true }),cors()) ;
 require('./config/configs.mongoose')(DB)
 require('./routes/author.routes')(app)
 
-app.listen(PORT,()=>console.log('>>>SERVER IS RUNNING ON PORT ${PORT}<<<'))
+app.listen(PORT,()=>console.log(`>>>SERVER IS RUNNING ON PORT ${PORT}<<<`))
