@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import Weather from './Weather';
 import './GiveIp.css';
-const SOAP_ENDPOINT = 'Access-Control-Allow-Origin:http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso';
+
+const SOAP_ENDPOINT = 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso';
 const authozize ='Access-Control-Allow-Origin:'
+
+
 function GiveIp() {
 
   const [IPadress, setIpadress] = useState({});
@@ -38,13 +41,12 @@ function GiveIp() {
     `;
 
     try {
-
-      const response = await axios.post(authozize+  SOAP_ENDPOINT, soapEnvelope, {
+      
+      const response = await axios.post( SOAP_ENDPOINT, soapEnvelope, {
         headers: {
           
           'Content-Type': 'text/xml; charset=utf-8',
           'SOAPAction': 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso',
-          
         },
       });
 
@@ -52,8 +54,11 @@ function GiveIp() {
     } catch (error) {
       if (error.response) {
         console.error('Error making SOAP request0:', error.response.status, error.response.statusText);
-      
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error('Error making SOAP request1:', error.request);
       } else {
+        // Something happened in setting up the request that triggered an Error
         console.error('Error making SOAP request2:', error.message);
       }
     }
