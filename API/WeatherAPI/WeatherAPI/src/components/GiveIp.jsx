@@ -30,15 +30,7 @@ function GiveIp() {
 
   const sendSoapRequest = async () => {
     try {
-      
-      const response = await axios.post( SOAP_ENDPOINT, soapEnvelope, {
-        headers: {
-          
-          'Content-Type': 'text/xml; charset=utf-8',
-          'SOAPAction': 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso',
-        },
-      });
-
+      const response = await axios.post('http://localhost:8000/proxy');
       console.log('SOAP Response:', response.data);
       SetFlag(response.data)
     } catch (error) {
