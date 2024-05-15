@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Weather from './Weather';
 import './GiveIp.css';
-const SOAP_ENDPOINT = 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso';
-const authozize ='Access-Control-Allow-Origin:'
+
 
 
 function GiveIp() {
@@ -26,17 +25,27 @@ function GiveIp() {
     )
   };
 
+ useEffect(() => {
+    const sendSoapRequest = async () => {
+      try {
+        const response = await axios.post('http://localhost:8000/proxy',{
+          countryCode: IPadress.countryCode 
+        });
+        console.log('SOAP Response:', response.data);
+        const soapResponse = response.data;
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(soapResponse, 'text/xml');
+        const imageUrl = xmlDoc.getElementsByTagName('m:CountryFlagResult')[0].textContent;
+        SetFlag(imageUrl);
+      } catch (error) {
+        console.error('Error making SOAP request:', error);
+      }
+    };
 
-
-  const sendSoapRequest = async () => {
-    try {
-      const response = await axios.post('http://localhost:8000/proxy');
-      console.log('SOAP Response:', response.data);
-      SetFlag(response.data)
-    } catch (error) {
-      console.error('Error making SOAP request:', error);
+    if (IPadress.country) {
+      sendSoapRequest();
     }
-  };
+  }, [IPadress.country , IPadress.countryCode]); 
 
 
 
@@ -62,8 +71,7 @@ function GiveIp() {
     
     <h2>{IPadress.country}</h2>
     <h2>{IPadress.city}</h2>
-    <button onClick={sendSoapRequest}>Get Country Flag</button>
-    
+    <img src={Flag} alt={Flag} />
 
     <div>
       <Weather lon={IPadress.lon} lat={IPadress.lat} />
