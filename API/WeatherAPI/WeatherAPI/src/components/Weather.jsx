@@ -22,6 +22,17 @@ function Weather(props) {
     )
     };
 
+    const sendSoapDegree = async () => {
+        try {
+          const response = await axios.post('http://localhost:8000/degree');
+          console.log('SOAP DEgree Response:', response.data);
+          SetFlag(response.data)
+        } catch (error) {
+          console.error('Error making Degree SOAP request:', error);
+        }
+      };
+    
+
 
 
     if (Object.keys(Weather).length === 0 && Weather.constructor === Object) {
@@ -47,6 +58,7 @@ function Weather(props) {
               </form>
               <h2>Feels like: {Weather.main.feels_like}</h2>
               <h2>Temperature: {Weather.main.temp}</h2>
+              <button onClick={sendSoapDegree}>Convert to Degree </button>
           </div>
       );
 }

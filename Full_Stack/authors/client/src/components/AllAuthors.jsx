@@ -8,8 +8,7 @@ const AllAuthor = (props) => {
 
     useEffect(()=> {
         axios.get("http://localhost:8000/api/author")
-        .then(serverResponse =>{
-        
+        .then(serverResponse =>{ 
         console.log(serverResponse.data)
         SetAuthors(serverResponse.data)
         })
