@@ -55,23 +55,22 @@ useEffect(() => {
     
 
     <h1>
-      Hello let's click on this button and see the return 
+      Welcome To my Weather Application
     </h1>
 
 
     <form onSubmit={handleUserInputChange}>
-  <input type="text" name="IPadress" placeholder="Yo" id="IPadress" />
+  <input type="text" name="IPadress" placeholder="Input Your Ip adress" id="IPadress" />
   <input type="submit" value="Submit" />
     </form>
 
 
 
 
-    <h2>Ip adress :  </h2>
     
-    <h2>{IPadress.country}</h2>
-    <h2>{IPadress.city}</h2>
-    <img src={Flag} alt={Flag} />
+    <h2>Country : {IPadress.country}</h2>
+    <h2>City : {IPadress.city}</h2>
+    <img src={Flag}  />
 
 
     <div>
