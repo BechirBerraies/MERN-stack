@@ -25,7 +25,7 @@ function GiveIp() {
     )
   };
 
- useEffect(() => {
+useEffect(() => {
     const sendSoapRequest = async () => {
       try {
         const response = await axios.post('http://localhost:8000/proxy',{
@@ -72,6 +72,7 @@ function GiveIp() {
     <h2>{IPadress.country}</h2>
     <h2>{IPadress.city}</h2>
     <img src={Flag} alt={Flag} />
+
 
     <div>
       <Weather lon={IPadress.lon} lat={IPadress.lat} />

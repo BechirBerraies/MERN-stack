@@ -4,6 +4,9 @@ const cors = require('cors')
 const bodyParser = require('body-parser');
 const app = express();
 const PORT = 8000;
+const { buildSchema } = require('graphql');
+
+const { graphqlHTTP } = require('express-graphql');
 
 // Middleware to parse JSON requests
 app.use(express.json(), cors(),bodyParser.json());
@@ -50,6 +53,33 @@ app.post('/proxy', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+// Define GraphQL schema
+const schema = buildSchema(`
+  type Query {
+    temperature(kelvin: Float!): Float
+  }
+`);
+
+// Define resolver functions
+const root = {
+  temperature: ({ kelvin }) => {
+    celsius = kelvin -  273.15
+    return celsius;
+  }
+};
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  rootValue: root,
+  graphiql: true // Enable GraphiQL interface for testing
+}));
+
 
 app.listen(PORT, () => {
   console.log(`Proxy server is running on http://localhost:${PORT}`);
