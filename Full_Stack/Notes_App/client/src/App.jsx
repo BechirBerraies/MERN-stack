@@ -1,9 +1,9 @@
 import {Routes, Route, Navigate} from 'react-router-dom'
 import Nav from "./components/Nav"
-import NoteList from './components/NoteList'
-import NoteShow from './components/NoteShow'
-import NoteCreate from './components/NoteCreate'
-import NoteEdit from './components/NoteEdit'
+import MarchandisesList from './components/MarchandisesList'
+import MarchandisesShow from './components/MarchandisesShow'
+import MarchandisesCreate from './components/MarchandisesCreate'
+import MarchandisesEdit from './components/MarchandisesEdit'
 import Edit from './views/Edit'
 import Create from './views/Create'
 function App() {
@@ -13,18 +13,18 @@ function App() {
       <Nav />
       {/* ROUTES */}
       <Routes>
-        {/* Notes List route */}
-        <Route path='/notes' element={<NoteList/>}/>
-        {/* One Note Route */}
-        <Route path='/notes/:id' element={<NoteShow baseUrl={baseUrl}/>}/>
-        {/* Create Note Route */}
-        {/* <Route path='/notes/new' element={<NoteCreate/>}/> */}
-        <Route path='/notes/new' element={<Create/>}/>
-        {/* Edit Note Route */}
-        {/* <Route path='/notes/:id/edit' element={<NoteEdit/>}/> */}
-        <Route path='/notes/:id/edit' element={<Edit/>}/>
+        {/* Marchandisess List route */}
+        <Route path='/Marchandisess' element={<MarchandisesList/>}/>
+        {/* One Marchandises Route */}
+        <Route path='/Marchandisess/:id' element={<MarchandisesShow baseUrl={baseUrl}/>}/>
+        {/* Create Marchandises Route */}
+        {/* <Route path='/Marchandisess/new' element={<MarchandisesCreate/>}/> */}
+        <Route path='/Marchandisess/new' element={<Create/>}/>
+        {/* Edit Marchandises Route */}
+        {/* <Route path='/Marchandisess/:id/edit' element={<MarchandisesEdit/>}/> */}
+        <Route path='/Marchandisess/:id/edit' element={<Edit/>}/>
         {/* GARD ROUTE */}
-        <Route path='*' element={<Navigate to='/notes' replace/>}/>
+        <Route path='*' element={<Navigate to='/Marchandisess' replace/>}/>
       </Routes>
     </div>
   )

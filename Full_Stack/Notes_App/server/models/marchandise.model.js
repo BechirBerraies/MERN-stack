@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
-const NoteSchema = new mongoose.Schema({
+const CommerceSchema = new mongoose.Schema({
 title:{
     type:String,
-    required:[true,"Note Title is required 👍👍👍👍"],
+    required:[true,"Marchandise Title is required 👍👍👍👍"],
     minlength:[3,"Min must be at least 3 characters 🪢🪢🪢🪢🪢"]
 },
 content:{
@@ -22,5 +22,5 @@ user:{
 
 }, {timestamps:true})
 
-const Note = mongoose.model('Note', NoteSchema);
-module.exports = Note
+const Marchandise = mongoose.model('Marchandise', CommerceSchema);
+module.exports = Marchandise

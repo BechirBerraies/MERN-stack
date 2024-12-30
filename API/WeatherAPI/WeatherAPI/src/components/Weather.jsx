@@ -48,11 +48,11 @@ function Weather(props) {
 
     return (
         <div>
-            <h2>Weather Component</h2>
+            {/* <h2>Weather Component</h2> */}
             <h2>Longitude From weather : {props.lon}</h2>
             <h2>Latitude : {props.lat}</h2>
             <form onSubmit={searchWeather}>
-                <input type="submit" value="Search" />
+                <input type="submit" value="Get the weather" />
             </form>
             {Object.keys(weather).length === 0 && weather.constructor === Object ? (
                 <h2>Loading...</h2>

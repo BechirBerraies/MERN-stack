@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-const NoteCreate = (props) => {
+const MarchandisesCreate = (props) => {
   const navigate = useNavigate()
-  const [note, setNote] = useState({ title: "", content: "", isImportant: false })
+  const [Marchandises, setMarchandises] = useState({ title: "", content: "", isImportant: false })
   const [errors, setErrors] = useState({ title: "", content: "" })
-  const createNote = (e) => {
+  const createMarchandises = (e) => {
     e.preventDefault()
-    axios.post('http://localhost:8000/api/notes', note)
+    axios.post('http://localhost:8000/api/Marchandises', Marchandises)
       .then(response => {
         console.log(response.data)
-        navigate('/notes')
+        navigate('/Marchandises')
       })
       .catch(error => {
         // console.log("Errors from Backend", error.response.data);
@@ -27,31 +27,29 @@ const NoteCreate = (props) => {
   }
   return (
     <div>
-      {/* <h4 className='bg-warning text-danger'>Note From State : {JSON.stringify(note)}</h4>
-      <hr />
-      <h4 className='bg-secondary text-light'>Backend Errors : {JSON.stringify(errors)}</h4> */}
-      <form onSubmit={createNote}>
+
+      <form onSubmit={createMarchandises}>
         <div className="form-group mb-3">
           <label htmlFor="">Title</label>
           <input type="text" className="form-control"
-            onChange={(e) => setNote({ ...note, title: e.target.value })}
-            value={note.title}
+            onChange={(e) => setMarchandises({ ...Marchandises, title: e.target.value })}
+            value={Marchandises.title}
           />
           {errors.title && <span className='text-danger h5'> {errors.title}</span>}
         </div>
         <div className="form-group mb-3">
           <label htmlFor="">Content</label>
           <textarea className="form-control"
-            onChange={(e) => setNote({ ...note, content: e.target.value })}
-            value={note.content}
+            onChange={(e) => setMarchandises({ ...Marchandises, content: e.target.value })}
+            value={Marchandises.content}
           ></textarea>
           {errors.content && <span className='text-danger h5'> {errors.content}</span>}
 
         </div>
         <div className="form-group mb-3">
           <input type="checkbox" className='form-check-input mx-3'
-            onChange={(e) => setNote({ ...note, isImportant: e.target.checked })}
-            value={note.isImportant}
+            onChange={(e) => setMarchandises({ ...Marchandises, isImportant: e.target.checked })}
+            value={Marchandises.isImportant}
           />
           <label className='form-check-label'>Is Important ?</label>
         </div>
@@ -63,4 +61,4 @@ const NoteCreate = (props) => {
   )
 }
 
-export default NoteCreate
+export default MarchandisesCreate

@@ -4,13 +4,13 @@ import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 const Create = (props) => {
     const navigate = useNavigate()
-    const [note, setNote] = useState({ title: "", content: "", isImportant: false })
+    const [Marchandises, setMarchandises] = useState({ title: "", content: "", isImportant: false })
     const [errors, setErrors] = useState({ title: "", content: "" })
-    const createNote = (newNote) => {
-        axios.post('http://localhost:8000/api/notes', newNote)
+    const createMarchandises = (newMarchandises) => {
+        axios.post('http://localhost:8000/api/Marchandises', newMarchandises)
         .then(response => {
           console.log(response.data)
-          navigate('/notes')
+          navigate('/Marchandisess')
         })
         .catch(error => {
           const errs = { title: "", content: "" }
@@ -22,7 +22,7 @@ const Create = (props) => {
     }
   return (
     <div>
-        <Form note={note} setter={setNote} errors={errors} operation={createNote}>Create</Form>
+        <Form Marchandises={Marchandises} setter={setMarchandises} errors={errors} operation={createMarchandises}>Create</Form>
     </div>
   )
 }

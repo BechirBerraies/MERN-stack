@@ -1,8 +1,8 @@
-const Note = require('../models/note.model')
+const Marchandise = require('../models/marchandise.model')
 
 module.exports= {
     findAll: (req,res)=>{
-        Note.find().populate('user')
+        Marchandise.find().populate('user')
         .then(databaseResponse =>{
             console.log("DATABASE RESPONSE TO FIND ALL :",databaseResponse)
             res.status(200).json(databaseResponse)
@@ -15,7 +15,7 @@ module.exports= {
     },
 
     findOne:(req,res)=>{
-        Note.findById(req.params.id)
+        Marchandise.findById(req.params.id)
         .then(databaseResponse=>{
             console.log("DATABASE RESPONSE : ",databaseResponse)
             res.status(200).json(databaseResponse)
@@ -27,7 +27,7 @@ module.exports= {
     },
 
     create: (req,res)=>{
-        Note.create(req.body)
+        Marchandise.create(req.body)
         .then(databaseResponse =>{
             console.log("DATABASE RESPONSE:",databaseResponse)
             res.status(201).json(databaseResponse)
@@ -39,7 +39,7 @@ module.exports= {
     },
 
     update:(req,res)=>{
-        Note.findByIdAndUpdate(req.params.id,req.body, {new: true,runValidators:true})
+        Marchandise.findByIdAndUpdate(req.params.id,req.body, {new: true,runValidators:true})
         .then(databaseResponse=>{
             console.log("DATABASE RESPONSE:",databaseResponse)
             res.status(200).json(databaseResponse)
@@ -51,7 +51,7 @@ module.exports= {
     },
 
     delete:(req,res)=>{
-        Note.findByIdAndDelete(req.params.id)
+        Marchandise.findByIdAndDelete(req.params.id)
         .then(databaseResponse=>{
             console.log("DATABASE RESPONSE:",databaseResponse)
             res.status(200).json(databaseResponse)

@@ -12,15 +12,6 @@ const { graphqlHTTP } = require('express-graphql');
 app.use(express.json(), cors(),bodyParser.json());
 
 
-// CORS middleware
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  next();
-});
 
 // Proxy endpoint
 app.post('/proxy', async (req, res) => {

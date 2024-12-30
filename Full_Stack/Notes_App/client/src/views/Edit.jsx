@@ -6,14 +6,14 @@ import Form from '../components/Form'
 const Edit = () => {
   const navigate = useNavigate()
   const {id} = useParams()
-  const [note, setNote] = useState({ title: "", content: ""})
+  const [Marchandises, setMarchandises] = useState({ title: "", content: ""})
   const [errors, setErrors] = useState({ title: "", content: "" })
-  const updateNote = (note) => {
+  const updateMarchandises = (Marchandises) => {
     // e.preventDefault()
-    axios.put(`http://localhost:8000/api/notes/${id}`, note)
+    axios.put(`http://localhost:8000/api/Marchandisess/${id}`, Marchandises)
       .then(response => {
         console.log(response.data)
-        navigate('/notes')
+        navigate('/Marchandisess')
       })
       .catch(error => {
         console.log("Errors from Backend", error.response.data);
@@ -27,16 +27,16 @@ const Edit = () => {
       })
   }
   useEffect(()=> {
-    axios.get(`http://localhost:8000/api/notes/${id}`)
+    axios.get(`http://localhost:8000/api/Marchandisess/${id}`)
     .then(response => {
       console.log(response);
-      setNote(response.data)
+      setMarchandises(response.data)
     })
     .catch(error => console.log(error))
   }, [id])
   return (
     <div>
-        <Form  note={note} setter={setNote} errors={errors} operation={updateNote}>Update</Form>
+        <Form  Marchandises={Marchandises} setter={setMarchandises} errors={errors} operation={updateMarchandises}>Update</Form>
     </div>
   )
 }
